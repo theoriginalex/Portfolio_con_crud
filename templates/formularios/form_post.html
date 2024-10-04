@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc); /* Fondo degradado */
+        color: white; /* Color del texto */
+    }
+
+    .containera {
+        margin: 80px 600px; /* Espaciado superior */
+        
+        background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el contenedor */
+        padding: 30px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        
+    }
+
+    .btn-primary {
+        background-color: #7c27fc; /* Color púrpura para el botón */
+        border-color: #7c27fc; /* Bordes del botón */
+    }
+
+    .nav-link {
+        color: #7c27fc; /* Color púrpura para los enlaces */
+    }
+
+    .nav-link:hover {
+        color: #5e1fc6; /* Color púrpura más oscuro en hover */
+    }
+</style>
+
+<div class="containera">
+    <h1>Crear Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    <div class="mt-3">
+        <a class="btn btn-success mt-3" href="{% url 'blog:posts' %}">Volver a la lista de posts</a>  <!-- Cambia 'post_list' según tu ruta -->
+    </div>
+</div>
+{% endblock %}
